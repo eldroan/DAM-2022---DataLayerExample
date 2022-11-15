@@ -13,10 +13,13 @@ public final class AlojamientoRepositoryFactory {
     }
 
     public static AlojamientoRepository create(final Context context) {
+        // Este currentUserId en una app con login nos traería información del usuario actual
         final UUID currentUserId = UserRepository.currentUserId();
         return new AlojamientoRepository(
             new AlojamientoRoomDataSource(context),
+            // Aca uso una implementación con shared preferences para no hacer una de room o retrofit
             new FavoritoSharedPreferencesDataSource(context, currentUserId),
+            // Aca uso una implementación en memoria no hacer una de room o retrofit
             new ReservaInMemoryDatasource(currentUserId)
         );
     }
