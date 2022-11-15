@@ -30,7 +30,7 @@ public class ListadoAlojamientoViewModel extends ViewModel implements OnResult<L
     public void recuperarAlojamientos() {
         new Thread(() -> {
             _loading.postValue(true);
-            alojamientoRepository.recuperarAlojaientos(ListadoAlojamientoViewModel.this);
+            alojamientoRepository.recuperarAlojamientos(ListadoAlojamientoViewModel.this);
         }).start();
     }
 
